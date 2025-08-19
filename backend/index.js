@@ -1,0 +1,70 @@
+import express from "express";
+import "dotenv/config";
+import humaninput from "./humanInput.js";
+import loadPDF from "./pdfuploader.js";
+import chat from "./retriver.js";
+import scrapeWebsite  from "./webScraping.js"
+import cors from "cors";
+import multer from "multer";
+
+const app = express();
+const upload = multer({ dest: 'uploads/' })
+const PORT = process.env.PORT || 3000;
+
+app.use(cors());
+app.use(express.urlencoded({ extended: false }));
+
+// Middleware to parse JSON
+app.use(express.json());
+
+// Basic route
+app.post('/humaninput', async(req, res) => {
+    const {humanInputText} = req.body;
+    await humaninput(humanInputText)
+        .then(() => {
+            res.status(200).send("Input processed successfully.");
+        })
+        .catch((error) => {
+            console.error("Error processing input:", error);
+            res.status(500).send("Internal Server Error");
+        });
+});
+
+app.post('/pdf', upload.single('pdfFile'), async (req, res) => {
+  try {
+    if (!req.file) {
+      return res.status(400).send("No file uploaded");
+    }
+
+    await loadPDF(req.file.path);  // pass file path to pdfuploader.js
+    res.status(200).send("PDF processed successfully.");
+  } catch (error) {
+    console.error("Error processing PDF:", error);
+    res.status(500).send("Internal Server Error");
+  }
+});
+
+
+app.post('/retrive',async (req, res)=>{
+    const { userQuery } = req.body;
+    const response = await chat(userQuery);
+    res.send(response);
+    
+})
+
+app.post('/scrape', async (req, res) => {
+    const { url } = req.body;
+    await scrapeWebsite(url)
+        .then(() => {
+            res.status(200).send("Website scraped successfully.");
+        })
+        .catch((error) => {
+            console.error("Error scraping website:", error);
+            res.status(500).send("Internal Server Error");
+        });
+});
+
+// Start server
+app.listen(PORT, () => {
+    console.log(`Server running on port ${PORT}`);
+});

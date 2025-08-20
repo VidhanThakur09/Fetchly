@@ -18,7 +18,7 @@ app.use(cors({
     allowedHeaders: '*' // Allow all headers
 }));
 
-app.use(cors(corsOptions));
+// app.use(cors(corsOptions));
 app.use(express.urlencoded({ extended: false }));
 
 // Middleware to parse JSON

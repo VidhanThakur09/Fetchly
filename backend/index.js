@@ -19,7 +19,7 @@ app.use(cors({
 }));
 
 // Explicitly handle preflight requests
-app.options('*', cors());
+// app.options('*', cors());
 
 // app.use(cors(corsOptions));
 app.use(express.urlencoded({ extended: false }));

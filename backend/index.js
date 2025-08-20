@@ -11,7 +11,12 @@ const app = express();
 const upload = multer({ dest: 'uploads/' })
 const PORT = process.env.PORT || 3000;
 
-app.use(cors());
+// Configure CORS to allow requests from your frontend URL
+const corsOptions = {
+    origin: 'https://fetchly-1-lnae.onrender.com/'
+};
+
+app.use(cors(corsOptions));
 app.use(express.urlencoded({ extended: false }));
 
 // Middleware to parse JSON

@@ -13,10 +13,13 @@ const PORT = process.env.PORT || 3000;
 
 // Configure CORS to allow requests from your frontend URL
 app.use(cors({
-    origin: 'https://fetchly-1-lnae.onrender.com', // Allow all origins
-    methods: '*', // Allow all methods
-    allowedHeaders: '*' // Allow all headers
+    origin: "https://fetchly-1-lnae.onrender.com",
+    methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
+    allowedHeaders: ["Content-Type", "Authorization"]
 }));
+
+// Explicitly handle preflight requests
+app.options('*', cors());
 
 // app.use(cors(corsOptions));
 app.use(express.urlencoded({ extended: false }));

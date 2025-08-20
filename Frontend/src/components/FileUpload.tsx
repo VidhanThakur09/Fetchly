@@ -97,7 +97,7 @@ export function FileUpload() {
                 Select Files
               </Button>
               <p className="text-sm text-muted-foreground mt-2">
-                Support: TXT, PDF, DOC, DOCX, MD
+                Support: PDF
               </p>
             
           </div>

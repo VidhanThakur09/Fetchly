@@ -89,7 +89,7 @@ export const VideoUpload = () => {
         <div className="space-y-3">
           <div className="flex gap-2">
             <Input
-              placeholder="Enter video URL (YouTube, Vimeo, etc.)"
+              placeholder="Enter Website URL"
               value={currentLink}
               onChange={(e) => setCurrentLink(e.target.value)}
               onKeyPress={handleKeyPress}

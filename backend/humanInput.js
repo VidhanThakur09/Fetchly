@@ -19,10 +19,15 @@ export default async function embedAndStoreString(textInput) {
   try {
     // 3. Store the documents in the Qdrant vector database.
     // The method takes the created documents and the embeddings model.
-    const vectorStore = await QdrantVectorStore.fromDocuments(docs, embeddings, {
-      url: process.env.QDRANT_URL,
-      collectionName: "chaiCode-Collection",
-    });
+    const vectorStore = await QdrantVectorStore.fromDocuments(
+      docs,
+      embeddings,
+      {
+        url: process.env.QDRANT_URL,
+        collectionName: "chaiCode-Collection",
+        apiKey: process.env.QDRANT_API_KEY,
+      }
+    );
 
     console.log(`Embedding for string "${textInput}" has been successfully stored.`);
     

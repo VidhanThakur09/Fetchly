@@ -24,6 +24,7 @@ export default async function chat(userQuery){
       {
         url: process.env.QDRANT_URL,
         collectionName: "chaiCode-Collection",
+        apiKey: process.env.QDRANT_API_KEY,
       }
     );
 

@@ -33,10 +33,15 @@ export default async function scrapeWebsite(url) {
 
   try {
     // 5. Store in Qdrant
-    const vectorStore = await QdrantVectorStore.fromDocuments(docs, embeddings, {
-      url: process.env.QDRANT_URL,
-      collectionName: "chaiCode-Collection",
-    });
+    const vectorStore = await QdrantVectorStore.fromDocuments(
+      docs,
+      embeddings,
+      {
+        url: process.env.QDRANT_URL,
+        collectionName: "chaiCode-Collection",
+        apiKey: process.env.QDRANT_API_KEY,
+      }
+    );
 
     console.log(
       `✅ Successfully stored ${docs.length} text chunks from "${url}" into Qdrant.`

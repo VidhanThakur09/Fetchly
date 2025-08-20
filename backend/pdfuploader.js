@@ -20,6 +20,7 @@ export default async function loadPDF(filePath='') {
   const vectorStore = await QdrantVectorStore.fromDocuments(docs, embeddings, {
     url: process.env.QDRANT_URL,
     collectionName: "chaiCode-Collection",
+    apiKey: process.env.QDRANT_API_KEY,
   });
   console.log("indexing of data Done ......");
 }

@@ -3,8 +3,18 @@ import { FileUpload } from "@/components/FileUpload";
 import { LinkUpload } from "@/components/LinkUpload";
 import { ChatInterface } from "@/components/ChatInterface";
 import { RagStore } from "@/components/RagStore";
+import { useEffect } from "react";
+import axios from "axios";
 
 const Index = () => {
+  const backend = import.meta.env.VITE_BACKEND_URL || "http://localhost:3000";
+  useEffect(() => {
+    const postData = async () => {
+      await axios.get(`${backend}/`);
+    };
+    postData();
+  }, []);
+
   return (
     <div className="min-h-screen bg-background p-6">
       <div className="max-w-7xl mx-auto">

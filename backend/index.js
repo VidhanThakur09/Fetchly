@@ -28,15 +28,11 @@ app.use(express.urlencoded({ extended: false }));
 // Middleware to parse JSON
 app.use(express.json());
 
-// deleteDb
 
-app.get('/', async(req, res) => {
-    await deleteDB();
-})
 
 // Basic route
 app.post('/humaninput', async(req, res) => {
-    await deleteDB();
+    // await deleteDB();
     const {humanInputText} = req.body;
     await humaninput(humanInputText)
         .then(() => {
@@ -49,7 +45,7 @@ app.post('/humaninput', async(req, res) => {
 });
 
 app.post('/pdf', upload.single('pdfFile'), async (req, res) => {
-    await deleteDB();
+    // await deleteDB();
   try {
     if (!req.file) {
       return res.status(400).send("No file uploaded");
@@ -72,7 +68,7 @@ app.post('/retrive',async (req, res)=>{
 })
 
 app.post('/scrape', async (req, res) => {
-    await deleteDB();
+    // await deleteDB();
     const { url } = req.body;
     await scrapeWebsite(url)
         .then(() => {

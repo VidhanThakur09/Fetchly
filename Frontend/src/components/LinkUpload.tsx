@@ -57,7 +57,7 @@ export const LinkUpload = () => {
       });
       return;
     }
-    await axios.post(`${backend}/delete`);
+    // await axios.post(`${backend}/delete`);
     for (const video of videoLinks) {
       await axios.post(`${backend}/scrape`, { url: video });
     }

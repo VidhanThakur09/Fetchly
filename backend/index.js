@@ -28,9 +28,9 @@ app.use(express.urlencoded({ extended: false }));
 // Middleware to parse JSON
 app.use(express.json());
 
-app.post("/delete",async(req,res)=>{
-    await deleteDB();
-})
+// app.post("/delete",async(req,res)=>{
+//     await deleteDB();
+// })
 
 // Basic route
 app.post('/humaninput', async(req, res) => {

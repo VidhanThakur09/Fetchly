@@ -14,7 +14,7 @@ const PORT = process.env.PORT || 3000;
 
 // Configure CORS to allow requests from your frontend URL
 app.use(cors({
-    origin: ["https://fetchly-1-lnae.onrender.com"],
+    origin: ["https://fetchly-1-lnae.onrender.com", "https://fetchly-1xki.onrender.com"],
     methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
     allowedHeaders: ["Content-Type", "Authorization"]
 }));

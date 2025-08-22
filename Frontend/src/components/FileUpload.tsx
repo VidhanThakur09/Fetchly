@@ -38,7 +38,7 @@ export function FileUpload() {
     for (const file of files) {
       const formData = new FormData();
       formData.append("pdfFile", file); // name must match multer field name in backend
-
+      await axios.get(`${backend}/delete`);
       await axios.post(`${backend}/pdf`, formData, {
         headers: { "Content-Type": "multipart/form-data" },
       });

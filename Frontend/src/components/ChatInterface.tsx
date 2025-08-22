@@ -48,7 +48,7 @@ export function ChatInterface() {
     //   };
     //   setMessages(prev => [...prev, aiResponse]);
     // }, 1000);
-
+    
     const response = await axios.post(`${backend}/retrive`, {userQuery: inputText })
     const aiMessage: Message = {
       id: new Date(),

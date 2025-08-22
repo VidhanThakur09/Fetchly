@@ -23,7 +23,7 @@ export function DataSource() {
       return;
     }
     setLoading(true);
-    await axios.get(`${backend}/delete`);
+    await axios.post(`${backend}/delete`);
     await axios.post(`${backend}/humaninput`, {humanInputText:text })
       .then(() => {
         toast({

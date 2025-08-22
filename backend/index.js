@@ -4,6 +4,7 @@ import humaninput from "./humanInput.js";
 import loadPDF from "./pdfuploader.js";
 import chat from "./retriver.js";
 import scrapeWebsite  from "./webScraping.js"
+import deleteDB from "./deleteDB.js";
 import cors from "cors";
 import multer from "multer";
 
@@ -13,7 +14,7 @@ const PORT = process.env.PORT || 3000;
 
 // Configure CORS to allow requests from your frontend URL
 app.use(cors({
-    origin: "https://fetchly-1-lnae.onrender.com",
+    origin: ["https://fetchly-1-lnae.onrender.com", "http://localhost:8080"],
     methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
     allowedHeaders: ["Content-Type", "Authorization"]
 }));
@@ -26,6 +27,12 @@ app.use(express.urlencoded({ extended: false }));
 
 // Middleware to parse JSON
 app.use(express.json());
+
+// deleteDb
+
+app.get('/', async(req, res) => {
+    await deleteDB();
+})
 
 // Basic route
 app.post('/humaninput', async(req, res) => {

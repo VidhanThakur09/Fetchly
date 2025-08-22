@@ -13,7 +13,7 @@ const Index = () => {
       await axios.get(`${backend}/`);
     };
     postData();
-  }, []);
+  }, [RagStore]);
 
   return (
     <div className="min-h-screen bg-background p-6">

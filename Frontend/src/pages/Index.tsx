@@ -1,6 +1,6 @@
 import { DataSource } from "@/components/DataSource";
 import { FileUpload } from "@/components/FileUpload";
-import { VideoUpload } from "@/components/VideoUpload";
+import { LinkUpload } from "@/components/LinkUpload";
 import { ChatInterface } from "@/components/ChatInterface";
 import { RagStore } from "@/components/RagStore";
 
@@ -32,7 +32,7 @@ const Index = () => {
             </div>
             <div className="grid grid-cols-1 gap-4 h-fit">
               <FileUpload />
-              <VideoUpload />
+              <LinkUpload />
             </div>
           </div>
 

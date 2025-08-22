@@ -6,7 +6,7 @@ import { useToast } from "@/hooks/use-toast";
 import { Video, Plus, X, Upload } from "lucide-react";
 import axios from "axios";
 
-export const VideoUpload = () => {
+export const LinkUpload = () => {
   const [videoLinks, setVideoLinks] = useState<string[]>([]);
   const [currentLink, setCurrentLink] = useState("");
   const { toast } = useToast();
@@ -17,7 +17,7 @@ export const VideoUpload = () => {
     if (!currentLink.trim()) {
       toast({
         title: "Invalid URL",
-        description: "Please enter a valid video URL",
+        description: "Please enter a valid Link URL",
         variant: "destructive"
       });
       return;
@@ -29,7 +29,7 @@ export const VideoUpload = () => {
     } catch {
       toast({
         title: "Invalid URL",
-        description: "Please enter a valid video URL",
+        description: "Please enter a valid Link URL",
         variant: "destructive"
       });
       return;
@@ -38,8 +38,8 @@ export const VideoUpload = () => {
     setVideoLinks([...videoLinks, currentLink]);
     setCurrentLink("");
     toast({
-      title: "Video link added",
-      description: "Video link has been added to the list"
+      title: "Link link added",
+      description: "Link link has been added to the list"
     });
   };
 
@@ -51,8 +51,8 @@ export const VideoUpload = () => {
     setLoading(true);
     if (videoLinks.length === 0) {
       toast({
-        title: "No videos",
-        description: "Please add at least one video link",
+        title: "No Link",
+        description: "Please add at least one Link link",
         variant: "destructive"
       });
       return;
@@ -64,7 +64,7 @@ export const VideoUpload = () => {
 
     toast({
       title: "Success",
-      description: `${videoLinks.length} video link(s) processed and added to RAG store`
+      description: `${videoLinks.length} link(s) processed and added to RAG store`
     });
     setVideoLinks([]);
     setLoading(false);
@@ -81,7 +81,7 @@ export const VideoUpload = () => {
       <CardHeader className="pb-4">
         <CardTitle className="flex items-center gap-2 text-lg">
           <Video className="h-5 w-5 text-primary" />
-          {!loading?"Video Links":<span className="animate-pulse">Uploading...</span>}
+          {!loading?"Links":<span className="animate-pulse">Uploading...</span>}
         </CardTitle>
       </CardHeader>
       <CardContent className="space-y-4">
@@ -136,7 +136,7 @@ export const VideoUpload = () => {
           className="w-full bg-gradient-primary hover:bg-gradient-primary/90 shadow-glow-subtle disabled:opacity-50 disabled:shadow-none transition-all duration-300"
         >
           <Upload className="h-4 w-4 mr-2" />
-          Process Video Links ({videoLinks.length})
+          Process Link Links ({videoLinks.length})
         </Button>
       </CardContent>
     </Card>

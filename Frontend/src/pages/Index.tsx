@@ -7,13 +7,19 @@ import { useEffect } from "react";
 import axios from "axios";
 
 const Index = () => {
-  // const backend = import.meta.env.VITE_BACKEND_URL || "http://localhost:3000";
-  // useEffect(() => {
-  //   const postData = async () => {
-  //     await axios.get(`${backend}/`);
-  //   };
-  //   postData();
-  // }, [RagStore]);
+  const backend = import.meta.env.VITE_BACKEND_URL || "http://localhost:3000";
+
+  useEffect(() => {
+    const clearDatabase = async () => {
+      try {
+        await axios.post(`${backend}/delete`);
+        console.log("Database cleared successfully on initial load.");
+      } catch (error) {
+        console.error("Failed to clear database:", error);
+      }
+    };
+    clearDatabase();
+  }, []);
 
   return (
     <div className="min-h-screen bg-background p-6">

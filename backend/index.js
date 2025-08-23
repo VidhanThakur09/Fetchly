@@ -9,6 +9,7 @@ import scrapeWebsite from "./webScraping.js";
 import deleteDB from "./deleteDB.js";
 import cors from "cors";
 import multer from "multer";
+import { skipPartiallyEmittedExpressions } from "typescript";
 
 const app = express();
 const upload = multer({ dest: 'uploads/' });
@@ -23,9 +24,14 @@ app.use(cors({
 app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
 
+app.post('/delete', async (req, res) => {
+    await deleteDB();
+    res.status(200).send("Database deleted successfully.");
+});
+
 app.post('/humaninput', async(req, res) => {
     // Add await here
-    await deleteDB();
+    // await deleteDB();
     const {humanInputText} = req.body;
     await humaninput(humanInputText)
         .then(() => {
@@ -39,7 +45,7 @@ app.post('/humaninput', async(req, res) => {
 
 app.post('/pdf', upload.single('pdfFile'), async (req, res) => {
     // Add await here
-    await deleteDB();
+    // await deleteDB();
     try {
         if (!req.file) {
             return res.status(400).send("No file uploaded");
@@ -60,7 +66,7 @@ app.post('/retrive', async (req, res) => {
 
 app.post('/scrape', async (req, res) => {
     // Add await here
-    await deleteDB();
+    // await deleteDB();
     const { url } = req.body;
     await scrapeWebsite(url)
         .then(() => {

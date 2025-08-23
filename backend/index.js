@@ -9,7 +9,7 @@ import scrapeWebsite from "./webScraping.js";
 import deleteDB from "./deleteDB.js";
 import cors from "cors";
 import multer from "multer";
-import { skipPartiallyEmittedExpressions } from "typescript";
+// import { skipPartiallyEmittedExpressions } from "typescript";
 
 const app = express();
 const upload = multer({ dest: 'uploads/' });
